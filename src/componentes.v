@@ -32,7 +32,7 @@ endmodule
 
 
 // Registro de tamaño configurable para modelar el PC. Cambia en cada flanco de subida de reloj o de reset
-module registro #(parameter WIDTH = 8)
+module registro #(parameter WIDTH = 10)
               (output reg  [WIDTH-1:0] Q,           // Salida del registro
                input  wire             clk, reset,  // Señales de reloj y reseteo
                input  wire [WIDTH-1:0] D);          // Entrada al registro
