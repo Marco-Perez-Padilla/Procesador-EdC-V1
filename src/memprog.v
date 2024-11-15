@@ -6,7 +6,7 @@ module memprog(output wire [15:0] Data,     // Dato que se lee de memoria
 
   initial
   begin
-    $readmemb("progfile.dat", Mem); // inicializa la memoria del fichero en texto binario
+    $readmemb("data/progfile.dat", Mem); // inicializa la memoria del fichero en texto binario
   end
   assign Data = Mem[Address];
 endmodule
