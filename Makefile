@@ -9,10 +9,10 @@ SOURCES = $(wildcard src/*.v)
 TESTBENCHES = $(wildcard testbenchs/*.v)
 
 # Nombre del archivo VCD que se generará
-VCD_FILE = data/alu_tb.vcd  # Archivo de salida del cronograma
+VCD_FILE = data/microc_tb.vcd  # Archivo de salida del cronograma
 
 # Nombre del archivo de salida generado por iverilog
-OBJ = bin/alu               # Este nombre puede ser genérico o específico según tu diseño
+OBJ = bin/micro               
 
 all: $(OBJ)
 
