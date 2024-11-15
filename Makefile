@@ -12,7 +12,7 @@ TESTBENCHES = $(wildcard testbenchs/*.v)
 VCD_FILE = data/microc_tb.vcd  # Archivo de salida del cronograma
 
 # Nombre del archivo de salida generado por iverilog
-OBJ = bin/micro               
+OBJ = bin/microc               
 
 all: $(OBJ)
 
