@@ -29,95 +29,93 @@ begin
   test_reset = 1'b0;
 end
 
-// jmp: s_inc = 0, we3 = 1 s_inm = x, wez = 1, Op = xxx
-// nop: s_inc = 1, we3 = 1, s_inm = x, wez = 1, Op = xxx
+// jmp, jnz, jz: s_inc = 0, we3 = 0 s_inm = x, wez = 0, Op = xxx 
+// nop: s_inc = 1, we3 = 1, s_inm = x, wez = 1, Op = xxx (tmb casos de jnz y jz una vez se cumple la condición)
 // li : s_inc = 1, we3 = 0, s_inm = 1, wez = 1, Op = xxx
-// aritmetico-logicas : s_inc = 1, we3 = 1, s_inm = 0, wez = 1, Op = Sí importa pero está dentro de la alu
-// jnz : s_inc = 0, we3 = 1, s_inm = x, wez = 0, Op = xxx
-// jz : s_inc = 0, we3 = 1, s_inm = x, wez = 0, Op = xxx
+// aritmetico-logicas : s_inc = 1, we3 = 1, s_inm = 0, wez = 1, Op = ### Opcode correspondiente de la operación
 
 // Bloque simulación señales control por ciclo
 initial @(posedge test_clk, negedge test_reset)
 begin
   #5;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // jmp Start
   test_s_inc = 1'b0;
   test_we3 = 1'b0;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // li  0, R2
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b1; 
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // li  2, R1
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b1; 
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // li  4, R3
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b1; 
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // li  1, R4
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b1; 
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // add R2, R3, R2
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b0;
   test_Op = 3'b010; // Add
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // sub R1, R4, R1
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b1;
   test_Op = 3'b011; // Sub
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // jnz Iter
   test_s_inc = 1'b0;
   test_we3 = 1'b0;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // add R2, R3, R2
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b0;
   test_Op = 3'b010; // Add
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // sub R1, R4, R1
   test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b1;
   test_Op = 3'b011; // Sub
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // jnz Iter
   test_s_inc = 1'b1;
   test_we3 = 1'b0;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
   #20;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  // jmp Fin
   test_s_inc = 1'b0;
   test_we3 = 1'b0;
   test_s_inm = 1'b0; // Don't care
