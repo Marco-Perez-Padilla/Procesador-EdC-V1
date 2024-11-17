@@ -13,9 +13,9 @@ module microc_tb;
   always
   begin
     test_clk = 1;
-    #40;
+    #10;
     test_clk = 0;
-    #40;
+    #10;
   end
 
 // Reseteo y configuración de salidas del testbench
@@ -25,7 +25,7 @@ begin
   $dumpvars;
   // ... señal de reset
   test_reset = 1'b1;
-  #10;
+  #5;
   test_reset = 1'b0;
 end
 
@@ -37,99 +37,93 @@ end
 // jz : s_inc = 0, we3 = 1, s_inm = x, wez = 0, Op = xxx
 
 // Bloque simulación señales control por ciclo
-initial @(posedge test_clk, posedge test_reset)
+initial @(posedge test_clk, negedge test_reset)
 begin
+  #5;
   // retardos y señales para ejecutar primera instrucción (ciclo 1)
   test_s_inc = 1'b0;
-  test_we3 = 1'b1;
-  test_s_inm = 1'b0; // Don't care
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b1;
-  test_s_inm = 1'b0; // Don't care
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b1;
-  test_s_inm = 1'b0; // Don't care
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b1;
-  test_s_inm = 1'b0; // Don't care
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b1;
-  test_s_inm = 1'b0; // Don't care
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
   test_we3 = 1'b0;
-  test_s_inm = 1'b1; 
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b0;
-  test_s_inm = 1'b1; 
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b0;
-  test_s_inm = 1'b1; 
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b0;
-  test_s_inm = 1'b1; 
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b1;
-  test_s_inm = 1'b0; // Don't care
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b1;
-  test_we3 = 1'b1;
-  test_s_inm = 1'b0; // Don't care
-  test_wez = 1'b1;
-  test_Op = 3'b000; // Don't care
-  #40;
-  // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b0;
-  test_we3 = 1'b1;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
-  #40;
+  #20;
   // retardos y señales para ejecutar primera instrucción (ciclo 1)
-  test_s_inc = 1'b0;
+  test_s_inc = 1'b1;
+  test_we3 = 1'b1;
+  test_s_inm = 1'b1; 
+  test_wez = 1'b0;
+  test_Op = 3'b000; // Don't care
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
+  test_we3 = 1'b1;
+  test_s_inm = 1'b1; 
+  test_wez = 1'b0;
+  test_Op = 3'b000; // Don't care
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
+  test_we3 = 1'b1;
+  test_s_inm = 1'b1; 
+  test_wez = 1'b0;
+  test_Op = 3'b000; // Don't care
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
+  test_we3 = 1'b1;
+  test_s_inm = 1'b1; 
+  test_wez = 1'b0;
+  test_Op = 3'b000; // Don't care
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
+  test_we3 = 1'b1;
+  test_s_inm = 1'b0; // Don't care
+  test_wez = 1'b0;
+  test_Op = 3'b010; // Add
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
   test_we3 = 1'b1;
   test_s_inm = 1'b0; // Don't care
   test_wez = 1'b1;
+  test_Op = 3'b011; // Sub
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b0;
+  test_we3 = 1'b0;
+  test_s_inm = 1'b0; // Don't care
+  test_wez = 1'b0;
   test_Op = 3'b000; // Don't care
-  #40;
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
+  test_we3 = 1'b1;
+  test_s_inm = 1'b0; // Don't care
+  test_wez = 1'b0;
+  test_Op = 3'b010; // Add
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
+  test_we3 = 1'b1;
+  test_s_inm = 1'b0; // Don't care
+  test_wez = 1'b1;
+  test_Op = 3'b011; // Sub
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b1;
+  test_we3 = 1'b0;
+  test_s_inm = 1'b0; // Don't care
+  test_wez = 1'b0;
+  test_Op = 3'b000; // Don't care
+  #20;
+  // retardos y señales para ejecutar primera instrucción (ciclo 1)
+  test_s_inc = 1'b0;
+  test_we3 = 1'b0;
+  test_s_inm = 1'b0; // Don't care
+  test_wez = 1'b0;
+  test_Op = 3'b000; // Don't care
+  #20;
   $finish;
 end
 

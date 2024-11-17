@@ -3,18 +3,18 @@ module microc(output wire [5:0] Opcode, output wire z, input wire clk, reset, s_
 
   // Inicialización
   wire [15:0] opcode;
-  wire [9:0] mem_dir, pc_dir, sum_result;
+  wire [9:0] pc_actual, pc_dir, sum_result;
   wire [7:0] reg_alu_1, reg_alu_2, wd3, alu_result;
   wire zero; 
 
   // Obtengo el PC
-  registro PC (mem_dir, clk, reset, pc_dir);
+  registro PC (pc_actual, clk, reset, pc_dir);
   // Obtengo el incremento
-  sum suma_pc (sum_result, mem_dir, 10'b0000000001);
+  sum suma_pc (sum_result, pc_actual, 10'b0000000001);
   // Obtengo el opcode de la instruccion
-  memprog instruccion (opcode, clk, mem_dir);
+  memprog instruccion (opcode, clk, pc_actual);
   // Elijo entre saltar a la direccion o el incremento del PC
-  mux2 #(10) mux_10_bit (pc_dir, opcode[9:0], mem_dir, s_inc);
+  mux2 #(10) mux_10_bit (pc_dir, opcode[9:0], sum_result, s_inc);
 
   // Elijo entre el resultado de la alu y la constante inmediata
   mux2 #(8) mux_8_bit (wd3, alu_result, opcode[11:4], s_inm);
